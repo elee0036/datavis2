@@ -1,0 +1,165 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "title": "Access to clean fuels for cooking (% of population) Vs. GDP per capita",
+  "params": [
+    {
+      "name": "Year",
+      "value": 2020,
+      "bind": {
+          "input": "range",
+          "min": 2000,
+          "max": 2020,
+          "step": 1,
+          "name": "Year: "
+      }
+    },
+    {
+      "name": "Population_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 1000,
+        "step": 50,
+        "name": "Minimum Population Density: "
+      }
+    },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "Show All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/dataset.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.Year == Year"
+    },
+    {
+      "filter": "Continent_selection == null || datum.Continent == Continent_selection"
+    },
+    {
+      "calculate": "datum.Access_to_clean_fuels_for_cooking",
+            "as": "Access to clean fuels for cooking"      
+    },
+    {
+      "calculate" : "datum.gdp_per_capita === 'NA' ? null : +datum.gdp_per_capita",
+      "as": "GDP per capita"
+    },
+    {"filter": "datum.gdp_per_capita !== null"},
+    {"filter": "datum.Density > Population_Above"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Access_to_clean_fuels_for_cooking",
+      "type": "quantitative",
+      "title": "Access to clean fuels for cooking (% of population)",
+      "axis": {"tickCount": 7},
+      "scale": {"domain": [1, 100]}
+    },
+    "y": {
+      "field": "gdp_per_capita",
+      "title": "GDP per capita",
+      "type": "quantitative",
+      "axis": {"tickCount": 6},
+      "scale": {"domain": [300, 100000]}
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Density",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1, 200, 500, 1000],
+            "range": [100, 200, 400, 600, 800, 1000]
+          },
+          "legend": {"format": ".1s"}
+        },
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "North America",
+              "South America",
+              "Europe",
+              "Africa",
+              "Asia",
+              "Oceania"
+            ],
+            "range": [
+              "#e41a1c",
+              "#984ea3",
+              "#ff7f00",
+              "#a6cee3",
+              "#377eb8",
+              "#a65628"
+            ]
+          }
+        },
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Access_to_clean_fuels_for_cooking","title": "Access to clean fuels for cooking(%)", "type": "quantitative", "format": ","},
+          {"field": "gdp_per_capita","title": "GDP per capita", "type": "quantitative", "format": ","},
+          {"field": "Density", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'China' || datum['Country'] == 'Singapore' || datum['Country'] == 'Australia'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Access_to_clean_fuels_for_cooking","title": "Access to clean fuels for cooking(%)", "type": "quantitative", "format": ","},
+          {"field": "gdp_per_capita","title": "GDP per capita", "type": "quantitative", "format": ","},
+          {"field": "Density", "type": "quantitative"}
+        ]
+      }
+    }
+  ]
+}
