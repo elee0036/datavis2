@@ -86,7 +86,7 @@
       "title": "GDP per capita",
       "type": "quantitative",
       "axis": {"tickCount": 6},
-      "scale": {"domain": [300, 100000]}
+      "scale": {"domain": [300, 150000]}
     }
   },
   "layer": [
