@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 400,
-  "height": 400,
+  "height": 300,
   "title": "Access to clean fuels for cooking (% of population) Vs. GDP per capita",
   "params": [
     {
