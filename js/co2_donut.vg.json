@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "title": "Total CO2 Emission by Continents 2000-2019",
+  "data": {
+      "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/dataset.csv"
+  },
+  "params": [
+    {
+      "name": "Year",
+      "value": 2019,
+      "bind": {
+          "input": "range",
+          "min": 2000,
+          "max": 2019,
+          "step": 1,
+          "name": "Year: "
+      }
+    }
+  ],
+  "transform": [      
+      {
+          "aggregate": [
+            {"op": "sum", "field": "Value_co2_emissions_kt_by_country", "as": "Total CO2 Emission"}
+          ],
+          "groupby": ["Continent", "Year"]
+      },
+      {"filter": "datum.Year == Year"}
+  ],
+  "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 100},
+  "encoding": {
+    "theta": {"field": "Total CO2 Emission", "type": "quantitative", "title": "CO2 Emission"},
+    "color": {
+      "field": "Continent",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "range": [
+          "#e41a1c",
+          "#984ea3",
+          "#ff7f00",
+          "#a6cee3",
+          "#377eb8",
+          "#a65628"
+        ]
+      }
+    },
+    "tooltip": [
+      {"field": "Continent", "type": "nominal"},
+      {"field": "Total CO2 Emission", "type":"quantitative", "title": "CO2 Emission in metric tons"}
+    ]
+  }
+}
