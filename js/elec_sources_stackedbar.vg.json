@@ -42,7 +42,7 @@
     },
     "color": {"field": "elec_from", "type": "nominal", "title": "Energy Source", 
       "scale": {
-        "domain": ["Electricity_from_fossil_fuels", "Electricity_from_nuclear", "Electricity_from_renewables"],
+        "domain": ["Fossil Fuels", "Nuclear", "Renewables"],
         "range": ["#F2657C", "#83A9ED", "#F1C40F"]
       }
     },
@@ -52,12 +52,18 @@
     ]
   },
   "transform": [
+    {"calculate": "datum.Electricity_from_fossil_fuels",
+    "as": "Fossil Fuels"},
+    {"calculate": "datum.Electricity_from_nuclear",
+    "as": "Nuclear"},
+    {"calculate": "datum.Electricity_from_renewables",
+    "as": "Renewables"},
     {
-      "fold": ["Electricity_from_fossil_fuels", "Electricity_from_nuclear", "Electricity_from_renewables"],
+      "fold": ["Fossil Fuels", "Nuclear", "Renewables"],
           "as": ["elec_from", "Electricity"]
     },
     {
-      "calculate": "indexof(['Electricity_from_fossil_fuels', 'Electricity_from_nuclear', 'Electricity_from_renewables'], datum.Source)",
+      "calculate": "indexof(['Fossil Fuels', 'Nuclear', 'Renewables'], datum.Source)",
       "as": "order"
     }, 
     {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
