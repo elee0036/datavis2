@@ -1,16 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Access to electricity (% of population) Distribution 2000-2020",
+  "title": "Access to electricity (% of population) Distribution 2000-2019",
   "width": 600,
   "height": 400,
   "params": [
     {
       "name": "Year",
-      "value": 2020,
+      "value": 2019,
       "bind": {
         "input": "range",
         "min": 2000,
-        "max": 2020,
+        "max": 2019,
         "step": 1,
         "name": "Year: "  
         }
