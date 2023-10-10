@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Sources of Electricity by Continents",
-  "width": 600,
-  "height": 500,
+  "width": 750,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/dataset.csv"
   },
