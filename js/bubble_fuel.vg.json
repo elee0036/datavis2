@@ -6,11 +6,11 @@
   "params": [
     {
       "name": "Year",
-      "value": 2020,
+      "value": 2019,
       "bind": {
           "input": "range",
           "min": 2000,
-          "max": 2020,
+          "max": 2019,
           "step": 1,
           "name": "Year: "
       }
@@ -62,15 +62,8 @@
     {
       "filter": "Continent_selection == null || datum.Continent == Continent_selection"
     },
-    {
-      "calculate": "datum.Access_to_clean_fuels_for_cooking",
-            "as": "Access to clean fuels for cooking"      
-    },
-    {
-      "calculate" : "datum.gdp_per_capita === 'NA' ? null : +datum.gdp_per_capita",
-      "as": "GDP per capita"
-    },
-    {"filter": "datum.gdp_per_capita !== null"},
+    {"filter": "datum.Access_to_clean_fuels_for_cooking > 0"},
+    {"filter": "datum.gdp_per_capita > 0"},
     {"filter": "datum.Density > Population_Above"}
   ],
   "encoding": {
@@ -86,7 +79,7 @@
       "title": "GDP per capita",
       "type": "quantitative",
       "axis": {"tickCount": 6},
-      "scale": {"domain": [300, 120000]}
+      "scale": {"domain": [100, 120000]}
     }
   },
   "layer": [
