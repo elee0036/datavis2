@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
   <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
 <body>
   
@@ -69,10 +69,10 @@
 
   <script type = "text/javascript">
 
-    var spec1 = "elec.vg.json";
+    var spec1 = "js/elec.vg.json";
     vegaEmbed("#choropleth_map1", spec1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
 
-    var spec2 = "bubble_fuel.vg.json";
+    var spec2 = "js/bubble_fuel.vg.json";
     vegaEmbed("#bubble1", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
 
   </script>
