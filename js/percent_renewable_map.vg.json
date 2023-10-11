@@ -78,7 +78,7 @@
           "field": "Renewable_energy_share_in_the_total_final_energy_consumption",
           "title": "% of renewable energy",
           "type": "quantitative",
-          "scale": {"scheme": "lightmulti"}
+          "scale": {"scheme": "plasma"}
         },
         "tooltip": [
           {"field": "Country", "type": "nominal", "title": "Country"},
