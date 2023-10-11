@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 380,
+  "height": 300,
+  "title": "Percentage of Electricity from Low-carbon Sources in Oceania 2000-2020",
+  "params": [
+    {
+      "name": "Year",
+      "value": 2019,
+      "bind": {
+          "input": "range",
+          "min": 2000,
+          "max": 2019,
+          "step": 1,
+          "name": "Year: "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/dataset.csv"
+  },
+  "transform": [   
+    {"filter": "datum.Continent == 'Oceania'"},
+    {"filter": "datum.Year == Year"},
+    {"filter": "datum.Low_carbon_electricity > 0"}
+  ],
+  "encoding": {
+    "theta": {"field": "Low_carbon_electricity", "type": "quantitative", "title":"Low_carbon_electricity", "stack": true},
+    "color": {
+      "field": "Country",
+      "type": "nominal",
+      "legend": null
+    },
+    "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "Low_carbon_electricity", "type": "quantitative", "title": "Percentage of Electricity", "format": ".2f"}
+      ]
+  },
+  "layer": [{
+    "mark": {"type": "arc", "outerRadius": 80}
+  }, {
+    "mark": {"type": "text", "radius": 120},
+    "encoding": {
+      "text": {"field": "Country", "type": "nominal"}
+    }
+  }]
+}
