@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A simple pie chart with labels.",
+  "width": 380,
+  "height": 300,
+  "title":"Percentage of electricity from low-carbon sources (nuclear and renewables) 2000-2020",
   "data": {
     "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/data/percentage_lowcarbon.csv"
   },
