@@ -53,7 +53,7 @@
     }
   ],
   "data": {
-    "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/dataset.csv"
+    "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/data/dataset.csv"
   },
   "transform": [
     {
