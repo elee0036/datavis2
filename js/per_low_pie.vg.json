@@ -2,18 +2,18 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 380,
   "height": 300,
-  "title":"Percentage of electricity from low-carbon sources (nuclear and renewables) 2000-2019",
+  "title":"Percentage of electricity from low-carbon sources (nuclear and renewables) 2000-2020",
   "data": {
     "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/data/percentage_lowcarbon.csv"
   },
   "params": [
     {
       "name": "Year",
-      "value": 2019,
+      "value": 2020,
       "bind": {
           "input": "range",
           "min": 2000,
-          "max": 2019,
+          "max": 2020,
           "step": 1,
           "name": "Year: "
       }
