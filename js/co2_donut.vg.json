@@ -55,7 +55,7 @@
     },
     "tooltip": [
       {"field": "Continent", "type": "nominal"},
-      {"field": "Total CO2 Emission", "type":"quantitative", "title": "CO2 Emission in metric tons"}
+      {"field": "Total CO2 Emission", "type":"quantitative", "title": "CO2 Emission in metric tons", "format": ".2f"}
     ]
   }
 }
