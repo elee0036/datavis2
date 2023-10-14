@@ -7,10 +7,11 @@ h1 {
 }
 
 body {
-  background-color: lightgray;
+  background-color: rgb(174, 183, 236);
 }
 
 .page {
+  width: 1300px;
   background-color: white;
   margin: auto;
   padding: 50px;
@@ -18,6 +19,7 @@ body {
 }
 
 .vis-container {
+  border: 0.5px solid black;
   width: 100%;
 }
 
