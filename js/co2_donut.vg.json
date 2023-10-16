@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400,
+  "width": 500,
   "height": 300,
   "title": "Total CO2 Emission by Continents 2000-2019",
   "data": {
@@ -44,10 +44,10 @@
           "Oceania"
         ],
         "range": [
-          "#e41a1c",
+          "#FFC100",
           "#984ea3",
-          "#ff7f00",
           "#a6cee3",
+          "#3BA356",
           "#377eb8",
           "#a65628"
         ]
@@ -55,7 +55,7 @@
     },
     "tooltip": [
       {"field": "Continent", "type": "nominal"},
-      {"field": "Total CO2 Emission", "type":"quantitative", "title": "CO2 Emission in metric tons", "format": ".2f"}
+      {"field": "Total CO2 Emission", "type":"quantitative", "title": "CO2 Emission in metric tons"}
     ]
   }
 }
