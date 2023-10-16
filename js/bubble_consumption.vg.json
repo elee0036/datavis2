@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400,
-  "height": 300,
-  "title": "Access to clean fuels for cooking (% of population) Vs. GDP per capita",
+  "width": 397,
+  "height": 400,
+  "title": "Energy Consumption per Person in kWh vs. GDP per capita",
   "params": [
     {
       "name": "Year",
@@ -62,25 +62,30 @@
     {
       "filter": "Continent_selection == null || datum.Continent == Continent_selection"
     },
-    {"filter": "datum.Access_to_clean_fuels_for_cooking > 0"},
+    {"filter": "datum.Primary_energy_consumption_per_capita > 0"},
     {"filter": "datum.gdp_per_capita > 0"},
     {"filter": "datum.Density > Population_Above"}
   ],
   "encoding": {
-    "x": {
-      "field": "Access_to_clean_fuels_for_cooking",
-      "type": "quantitative",
-      "title": "Access to clean fuels for cooking (% of population)",
-      "axis": {"tickCount": 7},
-      "scale": {"domain": [1, 100]}
-    },
     "y": {
+      "field": "Primary_energy_consumption_per_capita",
+      "type": "quantitative",
+      "title": "Energy consumption per person in kilowatt-hours",
+      "axis": {"tickCount": 7},
+      "scale": {"domain": [100, 270000]}
+    },
+    "x": {
       "field": "gdp_per_capita",
       "title": "GDP per capita",
       "type": "quantitative",
       "axis": {"tickCount": 6},
       "scale": {"domain": [100, 120000]}
-    }
+    },
+      "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "gdp_per_capita", "title": "GDP per capita", "type": "quantitative", "format": ".2f"},
+        {"field": "Primary_energy_consumption_per_capita","type": "quantitative", "title": "Energy consumption per person in kilowatt-hours", "format": ".2f"}
+      ]
   },
   "layer": [
     {
@@ -109,22 +114,16 @@
               "Oceania"
             ],
             "range": [
-              "#e41a1c",
+              "#FFC100",
               "#984ea3",
-              "#ff7f00",
               "#a6cee3",
+              "#3BA356",
               "#377eb8",
               "#a65628"
             ]
           }
         },
-        "opacity": {"value": 0.6},
-        "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "Access_to_clean_fuels_for_cooking","title": "Access to clean fuels for cooking(%)", "type": "quantitative", "format": ","},
-          {"field": "gdp_per_capita","title": "GDP per capita", "type": "quantitative", "format": ","},
-          {"field": "Density", "type": "quantitative"}
-        ]
+        "opacity": {"value": 0.6}
       }
     },
     {
@@ -145,13 +144,7 @@
             "value": 1
           },
           "value": 0
-        },
-        "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "Access_to_clean_fuels_for_cooking","title": "Access to clean fuels for cooking(%)", "type": "quantitative", "format": ","},
-          {"field": "gdp_per_capita","title": "GDP per capita", "type": "quantitative", "format": ","},
-          {"field": "Density", "type": "quantitative"}
-        ]
+        }
       }
     }
   ]
