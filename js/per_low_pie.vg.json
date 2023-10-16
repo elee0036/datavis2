@@ -1,62 +1,63 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400,
-  "height": 300,
-  "title":"Percentage of electricity from low-carbon sources 2000-2019",
-  "data": {
-    "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/data/percentage_lowcarbon.csv"
-  },
-  "params": [
-    {
-      "name": "Year",
-      "value": 2019,
-      "bind": {
-          "input": "range",
-          "min": 2000,
-          "max": 2019,
-          "step": 1,
-          "name": "Year: "
-      }
-    }
-  ],
-  "transform": [
-    {"filter": "datum.Year == Year"}
-  ],
-  "encoding": {
-    "theta": {"field": "percentage", "type": "quantitative", "stack":true},
-    "color": {
-      "field": "Continent",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "range": [
-          "#e41a1c",
-          "#984ea3",
-          "#ff7f00",
-          "#a6cee3",
-          "#377eb8",
-          "#a65628"
-        ]
-      }
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 600,
+    "height": 300,
+    "title":"Percentage of electricity from low-carbon sources 2000-2019",
+    "data": {
+      "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/data/percentage_lowcarbon.csv"
     },
-    "tooltip": [
-      {"field": "Continent", "type": "nominal"},
-      {"field": "percentage", "type":"quantitative", "title": "% of Electricity", "format": ".2f"}
-    ]
-  },
-  "layer": [{
-    "mark": {"type": "arc", "outerRadius": 80}
-  }, {
-    "mark": {"type": "text", "radius": 100},
+    "params": [
+      {
+        "name": "Year",
+        "value": 2019,
+        "bind": {
+            "input": "range",
+            "min": 2000,
+            "max": 2019,
+            "step": 1,
+            "name": "Year: "
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "datum.Year == Year"}
+    ],
     "encoding": {
-      "text": {"field": "Continent", "type": "nominal"}
-    }
-  }]
-}
+      "theta": {"field": "percentage", "type": "quantitative", "stack":true},
+      "color": {
+        "field": "Continent",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "range": [
+            "#FFC100",
+            "#984ea3",
+            "#a6cee3",
+            "#3BA356",
+            "#377eb8",
+            "#a65628"
+          ]
+        },
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "Continent", "type": "nominal"},
+        {"field": "percentage", "type":"quantitative", "title": "% of Electricity", "format": ".2f"}
+      ]
+    },
+    "layer": [{
+      "mark": {"type": "arc", "outerRadius": 80}
+    }, {
+      "mark": {"type": "text", "radius": 100},
+      "encoding": {
+        "text": {"field": "Continent", "type": "nominal"}
+      }
+    }]
+  }
