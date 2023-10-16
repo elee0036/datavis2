@@ -1,71 +1,72 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Sources of Electricity by Continents",
-  "width": 600,
-  "height": 300,
-  "data": {
-    "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/data/dataset.csv"
-  },
-  "params":[
-    {
-      "name": "Continent_selection",
-      "bind": {
-        "input": "select",
-        "options": [
-          null,
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "labels": [
-          "Show All",
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
-        ],
-        "name": "Continent Selection: "
-      }
-    }
-  ],
-  "mark": "bar",
-  "encoding": {
-    "x": {"field": "Year", "type": "ordinal"},
-    "y": {
-      "aggregate": "sum", "field": "Electricity", "type": "quantitative",
-      "title": "Electricity(TWh)"    
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Sources of Electricity by Continents",
+    "width": 489,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/elee0036/datavis2/main/data/dataset.csv"
     },
-    "color": {"field": "elec_from", "type": "nominal", "title": "Energy Source", 
-      "scale": {
-        "domain": ["Fossil Fuels", "Nuclear", "Renewables"],
-        "range": ["#F2657C", "#83A9ED", "#F1C40F"]
+    "params":[
+      {
+        "name": "Continent_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "labels": [
+            "Show All",
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Oceania"
+          ],
+          "name": "Continent Selection: "
+        }
       }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {"field": "Year", "type": "ordinal"},
+      "y": {
+        "aggregate": "sum", "field": "Electricity", "type": "quantitative",
+        "title": "Electricity(TWh)"    
+      },
+      "color": {"field": "elec_from", "type": "nominal", "title": "Energy Source", 
+        "scale": {
+          "domain": ["Fossil Fuels", "Nuclear", "Renewables"],
+          "range": ["#AAD33F", "#15DB60", "#11BA89"]
+        }
+      },
+      "tooltip": [
+        {"field": "elec_from", "title": "Energy Source"},
+        {"field": "Electricity", "aggregate": "sum", "title": "Electricity(TWh)"}
+      ]
     },
-    "tooltip": [
-      {"field": "elec_from", "title": "Energy Source"},
-      {"field": "Electricity", "aggregate": "sum", "title": "Electricity(TWh)"}
+    "transform": [
+      {"calculate": "datum.Electricity_from_fossil_fuels",
+      "as": "Fossil Fuels"},
+      {"calculate": "datum.Electricity_from_nuclear",
+      "as": "Nuclear"},
+      {"calculate": "datum.Electricity_from_renewables",
+      "as": "Renewables"},
+      {
+        "fold": ["Fossil Fuels", "Nuclear", "Renewables"],
+            "as": ["elec_from", "Electricity"]
+      },
+      {
+        "calculate": "indexof(['Fossil Fuels', 'Nuclear', 'Renewables'], datum.Source)",
+        "as": "order"
+      }, 
+      {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
     ]
-  },
-  "transform": [
-    {"calculate": "datum.Electricity_from_fossil_fuels",
-    "as": "Fossil Fuels"},
-    {"calculate": "datum.Electricity_from_nuclear",
-    "as": "Nuclear"},
-    {"calculate": "datum.Electricity_from_renewables",
-    "as": "Renewables"},
-    {
-      "fold": ["Fossil Fuels", "Nuclear", "Renewables"],
-          "as": ["elec_from", "Electricity"]
-    },
-    {
-      "calculate": "indexof(['Fossil Fuels', 'Nuclear', 'Renewables'], datum.Source)",
-      "as": "order"
-    }, 
-    {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
-  ]
-}
+  }
+  
