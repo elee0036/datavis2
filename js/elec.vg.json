@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Access to electricity (% of population) Distribution 2000-2019",
-  "width": 600,
+  "width": 536,
   "height": 400,
   "params": [
     {
