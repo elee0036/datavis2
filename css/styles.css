@@ -7,7 +7,7 @@ h1 {
 }
 
 body {
-  background-color: rgb(174, 183, 236);
+  background-color: rgb(52, 154, 60);
 }
 
 .page {
@@ -18,28 +18,128 @@ body {
   padding-top: 35px;
 }
 
-.vis-container {
-  border: 0.5px solid black;
-  width: 100%;
+.header{
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 5px;
 }
 
-.description h2,
-h1 {
-  margin-top: 0px;
+.text{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.header h3{
+  margin: 0;
+}
+
+h3{
+  padding: 20px;
+  padding-top: 0;
+  margin: auto;
+  margin-top: 0;
+  text-align: center;
+  border-bottom: 0.1cm solid;
+  font-size: 25px;
+}
+
+.highlight{
+  color: rgb(87, 185, 121);
+  font-weight: 800;
+}
+
+.section{  
+  padding-top: 40px;
+  padding-bottom: 50px;
+  margin: auto;
+  margin-top: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.vis-container {
+  width: 100%;
+  border: 1px solid;
+  padding-top: 0;
+}
+
+.description{
+  padding-top: 20px;
+}
+
+.description h2{
+  margin-top: 0;
+}
+
+.description p{
+  padding: auto;
+  font-size: 13pt;
+  margin: 35px;
 }
 
 .description-right {
   padding-left: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.description-right p{
+  padding-bottom: 20px;
+  font-size: 13pt;
+  margin: 35px;
+  margin-top: 15px;
+}
+
+.description-right ul{
+  font-size: 13pt;
+  margin: 30px;
+  margin-top: 0;
 }
 
 .description-left {
   padding-right: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.description-left p{
+  padding-bottom: 20px;
+  font-size: 13pt;
+  margin: 35px;
+  margin-top: 15px;
+}
+
+.description-left ul{
+  font-size: 13pt;
+  margin: 30px;
+  margin-top: 0;
 }
 
 .pure-g {
-  margin-bottom: 40px;
+  padding-bottom: 0;
 }
 
-.small-font {
-  font-size: 14px;
+a{
+  color: rgb(87, 194, 124);
+}
+
+#meta {
+  color: rgb(41, 60, 47);
+  text-align: center;
+}
+
+.img-container {
+  display: block; /* This makes the images stack on top of each other (vertically) */
+  text-align: center; /* Optionally, you can center-align the images within the container */
+}
+
+.img-container img {
+  display: block; /* This ensures each image is displayed as a block element (not inline) */
+  margin: auto;
+  
+  width: 30vw;
+  height: 15vw;
 }
